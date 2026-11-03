@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO Report — SiteCheck AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="index.html"><span class="logo-mark"><i data-lucide="scan-search"></i></span>SiteCheck AI</a>
+  <nav><a href="index.html">New analysis</a></nav>
+</header>
+
+<main class="wrap" id="main">
+  <section id="loading" class="center" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <h1 class="h-sm">Analyzing <span id="loadUrl"></span></h1>
+    <ol id="stages" class="stages"></ol>
+  </section>
+
+  <section id="errorBox" class="center" hidden role="alert">
+    <h1 class="h-sm">Analysis failed</h1>
+    <p id="errorMsg" class="error"></p>
+    <div class="actions">
+      <button class="btn primary" id="retryBtn">Try again</button>
+      <a class="btn ghost" href="index.html">Back</a>
+    </div>
+  </section>
+
+  <section id="report" hidden>
+    <div class="row">
+      <div>
+        <h1 class="h-sm" id="pTitle"></h1>
+        <a id="pUrl" class="muted" target="_blank" rel="noopener noreferrer"></a>
+        <div class="muted small" id="pMeta"></div>
+      </div>
+      <div class="actions noprint">
+        <button class="btn ghost" id="reBtn"><i data-lucide="refresh-cw"></i>Re-analyze</button>
+        <button class="btn ghost" id="jsonBtn"><i data-lucide="braces"></i>JSON</button>
+        <button class="btn ghost" id="csvBtn"><i data-lucide="table"></i>CSV</button>
+        <button class="btn ghost" id="printBtn"><i data-lucide="printer"></i>Print</button>
+      </div>
+    </div>
+
+    <div class="scorebox">
+      <div class="ring" role="img" id="ringWrap">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" class="trk"/><circle cx="60" cy="60" r="54" class="bar" id="ring"/></svg>
+        <div class="ring-n"><b id="ringNum">0</b><span>/ 100</span></div>
+      </div>
+      <div class="subs">
+        <div class="sub"><span>Technical SEO</span><b id="sTech"></b></div>
+        <div class="sub"><span>On-page SEO</span><b id="sPage"></b></div>
+        <div class="sub"><span>Content</span><b id="sCont"></b></div>
+      </div>
+      <div class="counts">
+        <div class="cnt ok"><b id="cPass"></b>Passed</div>
+        <div class="cnt warn"><b id="cWarn"></b>Warnings</div>
+        <div class="cnt bad"><b id="cFail"></b>Failed</div>
+        <div class="cnt gray"><b id="cUnv"></b>Not verified</div>
+      </div>
+    </div>
+
+    <h2>Top priorities</h2>
+    <ol id="priorities" class="prio"></ol>
+
+    <h2>Page facts</h2>
+    <div id="facts" class="grid facts"></div>
+
+    <h2>Checks &amp; recommendations</h2>
+    <div class="filters noprint" role="tablist" aria-label="Filter checks" id="filters">
+      <button data-f="issues" class="on">All Issues</button>
+      <button data-f="high">High Priority</button>
+      <button data-f="warn">Warnings</button>
+      <button data-f="pass">Passed Checks</button>
+      <button data-f="unverified">Not verified</button>
+    </div>
+    <div id="checks"></div>
+
+    <details class="how">
+      <summary>How is the score calculated?</summary>
+      <p id="howNote"></p>
+      <p class="muted small">Pass = full weight, warning = half, fail = zero. Weights:</p>
+      <ul id="weights" class="weights"></ul>
+    </details>
+  </section>
+</main>
+
+<footer class="foot"><p>The score is an independent on-page estimate, not an official Google metric.</p></footer>
+
+<script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/results.js"></script>
+</body>
+</html>

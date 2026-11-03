@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiteCheck AI — Website SEO Analyzer</title>
+<meta name="description" content="Analyze your website, discover SEO problems, and get actionable recommendations to improve search visibility.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+ 
+<header class="nav">
+  <a class="logo" href="index.html" aria-label="SiteCheck AI home">
+    <span class="logo-mark"><i data-lucide="scan-search"></i></span>SiteCheck AI
+  </a>
+  <nav aria-label="Primary">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <span id="apiStatus" class="status" role="status" title="Backend connection">Checking backend…</span>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1>Find Out How SEO-Friendly Your Website Is.</h1>
+    <p class="lead">Analyze your website, discover SEO problems, and get actionable recommendations to improve search visibility.</p>
+
+    <form id="analyzeForm" class="analyze" novalidate>
+      <label for="urlInput" class="sr">Website URL</label>
+      <div class="field">
+        <i data-lucide="globe"></i>
+        <input id="urlInput" type="text" inputmode="url" autocomplete="url" placeholder="https://example.com" aria-describedby="urlError" required>
+      </div>
+      <button type="submit" class="btn primary" id="analyzeBtn"><i data-lucide="search-check"></i>Analyze Website</button>
+    </form>
+    <p id="urlError" class="error" role="alert" hidden></p>
+    <p class="example">Try an example: <button type="button" class="link" id="exampleBtn">https://example.com</button></p>
+    <p class="note">Checks one public page at a time. No rankings, traffic, backlinks or Core Web Vitals are measured.</p>
+  </section>
+
+  <section id="historySection" class="wrap" hidden>
+    <div class="row">
+      <h2>Recent analyses</h2>
+      <button type="button" class="btn ghost" id="clearHistory"><i data-lucide="trash-2"></i>Clear history</button>
+    </div>
+    <ul id="historyList" class="history"></ul>
+  </section>
+
+  <section id="features" class="wrap">
+    <h2>What gets checked</h2>
+    <div class="grid">
+      <article class="card"><i data-lucide="wrench"></i><h3>Technical SEO</h3><p>HTTP status, HTTPS, canonical, robots directives, viewport, language, robots.txt and sitemap discovery.</p></article>
+      <article class="card"><i data-lucide="file-text"></i><h3>On-page SEO</h3><p>Title and meta description length, heading structure, Open Graph tags, structured data and image alt text.</p></article>
+      <article class="card"><i data-lucide="book-open"></i><h3>Content quality</h3><p>Word count, readability, repeated or empty headings and how descriptive your link text is.</p></article>
+      <article class="card"><i data-lucide="list-checks"></i><h3>Clear fixes</h3><p>Every issue has a severity, a reason it matters, and corrected HTML you can copy.</p></article>
+      <article class="card"><i data-lucide="scale"></i><h3>Transparent score</h3><p>Weighted, documented checks. Items that can't be verified are reported separately, never counted as failures.</p></article>
+      <article class="card"><i data-lucide="shield-check"></i><h3>Safe fetching</h3><p>The server blocks private networks, validates every redirect and limits request size and rate.</p></article>
+    </div>
+  </section>
+
+  <section id="how" class="wrap">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><h3>Paste a URL</h3><p>Enter any public http or https page.</p></li>
+      <li><h3>We fetch and inspect it</h3><p>The backend downloads the HTML and runs each check.</p></li>
+      <li><h3>Review and fix</h3><p>Filter issues by priority, export JSON or CSV, or print the report.</p></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>© <span id="year"></span> SiteCheck AI. The score is an independent estimate, not an official Google metric.</p>
+</footer>
+
+<script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
